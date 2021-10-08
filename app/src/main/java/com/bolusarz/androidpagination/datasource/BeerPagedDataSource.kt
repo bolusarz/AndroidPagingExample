@@ -1,5 +1,6 @@
 package com.bolusarz.androidpagination.datasource
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.bolusarz.androidpagination.model.Beer
@@ -20,10 +21,23 @@ class BeerPagedDataSource @Inject constructor(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Beer> {
         val nextPageNum = params.key ?: 1
         val beers = beerService.getBeers(nextPageNum)
-        return LoadResult.Page(
-            data = beers,
-            prevKey = null,
-            nextKey = nextPageNum + 1
-        )
+        return try {
+            LoadResult.Page(
+                data = beers,
+                prevKey = null,
+                nextKey = nextPageNum + 1
+            )
+        } catch (ex: Exception) {
+            Log.e(TAG, ex.message.toString())
+            LoadResult.Page(
+                data = listOf(),
+                prevKey = null,
+                nextKey = null
+            )
+        }
+    }
+
+    companion object {
+        const val TAG = "BeerPagedDataSource"
     }
 }
