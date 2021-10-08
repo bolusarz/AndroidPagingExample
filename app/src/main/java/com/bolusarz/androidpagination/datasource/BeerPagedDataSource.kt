@@ -20,7 +20,8 @@ class BeerPagedDataSource @Inject constructor(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Beer> {
         val nextPageNum = params.key ?: 1
-        val beers = beerService.getBeers(nextPageNum)
+        val itemsPerPage = params.loadSize
+        val beers = beerService.getBeers(nextPageNum, itemsPerPage)
         return try {
             LoadResult.Page(
                 data = beers,

@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    compileSdk 30
+    compileSdk 31
 
     defaultConfig {
         applicationId "com.bolusarz.androidpagination"
@@ -52,7 +52,7 @@ dependencies {
 
     //Glide
     implementation("com.github.bumptech.glide:glide:$glide_version")
-    annotationProcessor("com.github.bumptech.glide:compiler:$glide_version")
+    kapt("com.github.bumptech.glide:compiler:$glide_version")
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
     // LiveData
@@ -67,4 +67,6 @@ dependencies {
     // Hilt
     implementation("com.google.dagger:hilt-android:$hilt_version")
     kapt("com.google.dagger:hilt-android-compiler:$hilt_version")
+
+    implementation 'androidx.fragment:fragment-ktx:1.3.6'
 }
