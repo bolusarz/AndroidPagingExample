@@ -4,7 +4,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
         <variable
             name="beer"
             type="com.bolusarz.androidpagination.model.Beer" />
@@ -20,42 +19,48 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@+id/beerDescTv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription,ImageContrastCheck"
             tools:srcCompat="@drawable/ic_launcher_background" />
 
         <TextView
             android:id="@+id/beerNameTv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="10dp"
+            android:text="@{beer.name}"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/beerTagTv"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toEndOf="@+id/beerImageIv"
-            app:layout_constraintTop_toTopOf="@+id/beerImageIv"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="McAllister Brew" />
 
         <TextView
             android:id="@+id/beerDescTv"
-            android:layout_width="0dp"
+            android:layout_width="276dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{beer.desc}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/beerNameTv"
-            app:layout_constraintTop_toBottomOf="@+id/beerNameTv"
+            app:layout_constraintTop_toBottomOf="@+id/beerTagTv"
             tools:text="This beer is brewed to industry standards and a lot of effort has been put into it" />
 
         <TextView
             android:id="@+id/beerTagTv"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textColor="#CCC"
+            android:textColor="#757575"
             android:textSize="12sp"
+            android:text="@{beer.tagline}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/beerNameTv"
-            app:layout_constraintTop_toTopOf="@+id/beerNameTv" />
+            app:layout_constraintStart_toStartOf="@+id/beerNameTv"
+            app:layout_constraintTop_toBottomOf="@+id/beerNameTv"
+            tools:text="@string/default_beer_tagline" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

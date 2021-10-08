@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">AndroidPagination</string>
+    <string name="default_beer_name">Buzz</string>
+    <string name="default_beer_tagline">A Real Bitter Experience.</string>
+    <string name="default_beer_description">A light, crisp and bitter IPA brewed with English and American hops. A small batch brewed only once.</string>
 </resources>
